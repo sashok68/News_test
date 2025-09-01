@@ -1,3 +1,5 @@
+# React Native
+
 # OSX
 #
 .DS_Store
@@ -20,7 +22,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-**/.xcode.env.local
+ios/.xcode.env.local
 
 # Android/IntelliJ
 #
@@ -33,7 +35,6 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
-.kotlin/
 
 # node.js
 #
@@ -53,23 +54,67 @@ yarn-error.log
 **/fastlane/screenshots
 **/fastlane/test_output
 
-# Bundle artifact
+# Bundle artifacts
 *.jsbundle
 
-# Ruby / CocoaPods
-**/Pods/
-/vendor/bundle/
+# CocoaPods
+/ios/Pods/
 
-# Temporary files created by Metro to check the health of the file watcher
+# Expo
+.expo/
+web-build/
+dist/
+
+# Metro
 .metro-health-check*
 
-# testing
-/coverage
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
 
-# Yarn
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+.env
+
+# typescript
+*.tsbuildinfo
+
+# Temporary folders
+tmp/
+temp/
+
+# Logs
+logs
+*.log
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# IDE
+.vscode/
+.idea/
+
+# OS generated files
+Thumbs.db
+
+# Android builds
+android/app/build/
+android/build/
+android/.gradle/
+android/gradle/
+android/gradlew
+android/gradlew.bat
+
+# iOS builds  
+ios/build/
+ios/DerivedData/
+
+# React Native packager cache
+**/node_modules/**/.cache
+.metro/

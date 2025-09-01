@@ -1,97 +1,98 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# NewsApp - Мобильное приложение для новостей
 
-# Getting Started
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Технологический стек
 
-## Step 1: Start Metro
+- **React Native CLI** (не Expo)
+- **TypeScript**
+- **React Navigation** (Stack Navigator)
+- **Styled Components** для стилизации
+- **Axios** для HTTP запросов
+- **NewsAPI** для получения новостей
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Установка и запуск
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Предварительные требования
 
-```sh
-# Using npm
-npm start
+1. Node.js (v18 или выше)
+2. React Native CLI
+3. Android Studio / Xcode (для эмуляторов)
+4. API ключ от NewsAPI.org
 
-# OR using Yarn
-yarn start
+### Установка зависимостей
+
+```bash
+cd NewsApp
+npm install
 ```
 
-## Step 2: Build and run your app
+### Настройка API ключа
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+1. Зарегистрируйтесь на [NewsAPI.org](https://newsapi.org/)
+2. Получите бесплатный API ключ
+3. Откройте файл `src/services/newsApi.ts`
+4. Замените `YOUR_API_KEY_HERE` на ваш реальный API ключ:
 
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```typescript
+const NEWS_API_KEY = 'ваш_api_ключ_здесь';
 ```
 
-### iOS
+### Запуск приложения
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+#### Для Android:
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+npx react-native run-android
 ```
 
-Then, and every time you update your native dependencies, run:
+#### Для iOS:
 
-```sh
-bundle exec pod install
+```bash
+cd ios && pod install && cd ..
+npx react-native run-ios
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Структура проекта
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+```
+src/
+├── components/           # Переиспользуемые компоненты
+│   ├── styled/          # Стилизованные компоненты
+│   ├── NewsCard.tsx     # Карточка новости
+│   └── SearchAndFilters.tsx # Поиск и фильтры
+├── navigation/          # Настройка навигации
+│   ├── AppNavigator.tsx # Основной навигатор
+│   └── types.ts         # Типы для навигации
+├── screens/            # Экраны приложения
+│   ├── NewsListScreen.tsx    # Главный экран со списком
+│   └── NewsDetailScreen.tsx  # Детальная страница
+├── services/           # API сервисы
+│   └── newsApi.ts      # Сервис для работы с NewsAPI
+└── types/              # TypeScript типы
+    └── news.ts         # Типы для новостей
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Функционал
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Главный экран (NewsList)
+- Отображение списка новостей в виде карточек
+- Пагинация по 10 новостей на страницу
+- Поиск новостей по ключевым словам
+- Фильтрация по категориям
+- Pull-to-refresh для обновления
+- Обработка состояний загрузки и ошибок
 
-## Step 3: Modify your app
+### Детальная страница (NewsDetail)
+- Полное отображение новости с изображением
+- Информация об авторе, источнике и дате
+- Кнопка "Назад" для возврата к списку
+- Кнопка "Открыть в браузере" для перехода к полной статье
 
-Now that you have successfully run the app, let's make changes!
+## API Integration
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Приложение использует NewsAPI v2 с эндпоинтами:
+- `/top-headlines` - для получения топ новостей
+- `/everything` - для поиска новостей
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
